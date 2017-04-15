@@ -28,8 +28,15 @@ body.#{$theme}
   .btn
     background-color: $main-color
     border-radius: 0
+    min-width: 5rem
     &:hover
-      background-color: $selected-color
+      background-color: $selected-color !important
+  .notif-btn
+    float: right
+    width: 5rem
+    height: 2.8rem
+    i::before
+      line-height: 2.8rem
 
   .top_nav
     height: 100%
@@ -137,7 +144,7 @@ body.#{$theme}
 
   .main_container
     position: absolute
-    width: calc(100% - #{$button-width})
+    width: calc(100% - #{$button-width * 2})
     left: $button-width
     top: $button-height
     height: calc(100vh - #{$button-height})

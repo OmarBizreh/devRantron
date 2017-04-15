@@ -20,12 +20,13 @@ if (process.env.NODE_ENV === 'development') {
 
 const systemSpecs = {
   cpu_speed: os.cpus()[0].speed,
+  cpu_cores: os.cpus().length,
   mem_available: os.freemem(),
   high_spec: false,
 };
 
 // 2 684 354 560 == 2.5 GiB
-if (systemSpecs.cpu_speed > 2800 && systemSpecs.mem_available > 2684354560) {
+if (systemSpecs.cpu_speed > 2800 && systemSpecs.cpu_cores >= 4 && systemSpecs.mem_available > 2684354560) {
   systemSpecs.high_spec = true;
 }
 
