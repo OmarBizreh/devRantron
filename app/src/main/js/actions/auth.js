@@ -1,15 +1,8 @@
-import electron from 'electron';
+import { remote } from 'electron';
 import AUTH from '../consts/auth';
 import STATE from '../consts/state';
 
-const rantscript = electron.remote.require('rantscript');
-
-// change to disable comprssion in production
-rantscript.httpSettings.SET_COMPRESS(false);
-// only execute if we are in development
-if (process.env.NODE_ENV === 'development') {
-  rantscript.httpSettings.SET_DEBUG(true);
-}
+const rantscript = remote.getGlobal('rantscript');
 
 export function login(username, password) {
   return (dispatch) => {

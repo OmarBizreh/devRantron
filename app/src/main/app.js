@@ -7,6 +7,16 @@ const BrowserWindow = electron.BrowserWindow;
 const os = require('os');
 const path = require('path');
 const url = require('url');
+const rantscript = require('rantscript');
+
+global.rantscript = rantscript;
+
+// change to disable comprssion in production
+rantscript.httpSettings.SET_COMPRESS(false);
+// only execute if we are in development
+if (process.env.NODE_ENV === 'development') {
+  rantscript.httpSettings.SET_DEBUG(true);
+}
 
 const systemSpecs = {
   cpu_speed: os.cpus()[0].speed,
@@ -21,7 +31,7 @@ if (systemSpecs.cpu_speed > 2800 && systemSpecs.mem_available > 2684354560) {
 
 console.log(`System is high spec: ${systemSpecs.high_spec}`);
 
-exports.systemSpecs = systemSpecs;
+global.systemSpecs = systemSpecs;
 
 const {
   default: installExtension,
