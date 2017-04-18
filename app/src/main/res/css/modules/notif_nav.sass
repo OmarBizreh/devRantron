@@ -1,4 +1,6 @@
 // !compileOnSave
+.noMouse
+  pointer-events: none
 .notif_nav
   position: fixed
   height: 100%
@@ -10,18 +12,19 @@
   ::-webkit-scrollbar
     -webkit-appearance: none
     width: 0rem
-
   ul
     margin-top: 0
     li
       a
         max-width: $button-width
+  .btn
+    pointer-events: all
   .notif_drawer
     position: absolute
     top: $button-height
     right: 0
     height: calc(100vh - #{$button-height})
-    width: 5rem
+    width: 20rem
     font-weight: 300
     font-size: 1.2rem
     color: white
@@ -31,13 +34,43 @@
     .notif
       display: flex
       flex-direction: row
+      cursor: pointer
+      .notif_detailed_show
+        display: flex !important
+        opacity: 1 !important
+        transform: translateX(0px) !important
+      .notif_detailed
+        width: 15rem
+        display: none
+        opacity: 0
+        transform: translateX(80px)
+        background: rgba(0,0,0,0.6)
+        height: 60px
+        margin: 7.5px 0px
+        display: flex
+        justify-content: center
+        align-items: center
+        z-index: 500
+        pointer-events: none
+        transition: opacity 0.2s, transform 0.2s
+        p
+          margin: 0px
+          padding: 0px 1rem
       .notif_user
         width: 5rem
         height: 5rem
-        position: relative
+        position: absolute
+        right: 0px
         display: flex
         align-items: center
         justify-content: center
+        pointer-events: all
+        z-index: 1500
+        transition: transform 0.2s cubic-bezier(0.63,-0.39, 0.13, 1.7)
+        &:hover
+          transform: scale(1.2)
+        *
+          pointer-events: none
         span
         img
           height: 3.5rem
