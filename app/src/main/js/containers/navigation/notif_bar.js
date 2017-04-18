@@ -7,6 +7,15 @@ import { fetch } from '../../actions/rants';
 const rantscript = remote.getGlobal('rantscript');
 let AllNotifNodes = [];
 
+const auth = {
+  auth_token: {
+    id: 533581,
+    key: '',
+    expire_time: 1494934734,
+    user_id: 161184,
+  },
+};
+
 // @tahnik hook this up to redux please :)
 
 class NotifBar extends Component {
@@ -20,15 +29,6 @@ class NotifBar extends Component {
   }
 
   componentWillMount() {
-    const auth = {
-      auth_token: {
-        id: 533581,
-        key: 'HIDDEN',
-        expire_time: 1494934734,
-        user_id: 161184,
-      },
-    };
-
     rantscript
       .notifications(auth.auth_token, 0)
       .then((resp) => {
@@ -37,6 +37,22 @@ class NotifBar extends Component {
   }
 
   componentDidMount() {
+    setInterval(() => {
+      rantscript
+        .notifications(auth.auth_token, this.state.notifs.check_time)
+        .then((resp) => {
+          const items = resp.data.items;
+          console.log(resp.data);
+          if (items.length !== 0) {
+            this.setState({ notifs: {
+              check_time: resp.data.check_time,
+              items: [items, ...this.state.notifs.items],
+              username_map: [...this.state.notifs.items, resp.data.username_map],
+            } });
+            console.log(this.state.notifs);
+          }
+        });
+    }, 5000);
     document.body.addEventListener('mousemove', (e) => {
       if (e.clientX > window.innerWidth - 75 && !this.state.inScrollable) {
         this.setState({ inScrollable: true });
