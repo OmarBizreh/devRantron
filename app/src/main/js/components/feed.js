@@ -4,7 +4,7 @@ import Rants from '../containers/feeds/rants';
 import Stories from '../containers/feeds/stories';
 import Weekly from '../containers/feeds/weekly';
 import ROUTES from '../consts/routes';
-
+import PostRant from '../components/postrant';
 
 function Feed(props) {
   let activeFeed = <Rants key={ROUTES.main.rants} />;
@@ -23,6 +23,7 @@ function Feed(props) {
   }
   return (
     <div className="main_container row">
+      <PostRant />
       <div className="row" style={{ visibility: 'hidden', position: 'absolute', maxWidth: '900px', width: '100%' }} >
         <div className="rants col s6" id="fakeRant" style={{ visibility: 'hidden' }} >
           <div id="hiddenRant" style={{ visibility: 'hidden' }} />
