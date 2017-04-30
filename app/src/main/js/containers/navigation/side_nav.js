@@ -9,6 +9,7 @@ const SIDE_NAV_ITEMS = [
   { name: 'Stories', route: ROUTES.main.stories, icon: 'ion-ios-bookmarks' },
   { name: 'Weekly', route: ROUTES.main.weekly, icon: 'ion-calendar' },
   { name: 'Settings', route: ROUTES.main.settings, icon: 'ion-android-settings' },
+  { name: '/dev/null', route: ROUTES.main.profile, icon: 'ion-coffee' },
 ];
 
 class SideNav extends Component {

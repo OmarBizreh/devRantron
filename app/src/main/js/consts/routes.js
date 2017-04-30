@@ -2,6 +2,7 @@ const RootRoutes = {
   auth: '/auth',
   main: '/feeds',
   settings: '/settings',
+  profile: '/profile',
 };
 
 const Routes = {
@@ -18,6 +19,7 @@ const Routes = {
     collabs: `${RootRoutes.main}/collabs`,
     weekly: `${RootRoutes.main}/weekly`,
     settings: RootRoutes.settings,
+    profile: RootRoutes.profile,
   },
 };
 

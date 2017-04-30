@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import Feed from './components/feed';
 import Nav from './components/nav';
+import Profile from './components/profile';
 import Settings from './components/settings';
 import Authentication from './components/auth';
 import Toast from './components/toast';
@@ -32,6 +33,7 @@ function render(props) {
       />
       <Route path="/feeds/:feed" component={Feed} />
       <Route path={ROUTES.main.settings} component={Settings} />
+      <Route path={ROUTES.main.profile} component={Profile} />
       <Route path={ROUTES.auth.login} component={Authentication} />
       <Route path={ROUTES.auth.logout} component={Authentication} />
     </div>
