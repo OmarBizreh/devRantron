@@ -40,6 +40,13 @@ export const ITEM = {
   },
 };
 
+export const SETTINGS = {
+  THEME: {
+    CHANGE_BACKGROUND: 'THEME_CHANGE_BACK',
+    CHANGE_COL_WIDTH: 'THEME_COL_WIDTH',
+  },
+};
+
 export const FEED = {
   RANTS: {
     NAME: 'RANTS',

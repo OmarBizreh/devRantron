@@ -9,6 +9,7 @@ import Notifs from '../containers/notifs/notifs';
 import Rants from '../containers/feeds/rants';
 import Stories from '../containers/feeds/stories';
 import Modal from '../containers/modal/modal';
+import Settings from '../containers/settings/settings';
 
 class MainRoutes extends Component {
   constructor() {
@@ -45,6 +46,14 @@ class MainRoutes extends Component {
             path="/stories"
             render={() => (
               <Stories
+                open={(type, id) => this.openModal(type, id)}
+              />
+            )}
+          />
+          <Route
+            path="/settings"
+            render={() => (
+              <Settings
                 open={(type, id) => this.openModal(type, id)}
               />
             )}
