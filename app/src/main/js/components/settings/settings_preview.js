@@ -5,7 +5,7 @@ const SettingsPreview = (props) => {
   const { theme } = props;
   return (
     <div className="settings_preview" >
-      Preview
+      preview
     </div>
   );
 };

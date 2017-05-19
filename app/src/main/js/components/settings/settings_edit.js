@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ChromePicker } from 'react-color';
 
 class SettingsEdit extends Component {
   constructor() {
     super();
-    // Use this component's state to keep the input value
-    // https://facebook.github.io/react/docs/forms.html
     this.state = {
       backgroundColor: '',
     };
@@ -20,7 +19,12 @@ class SettingsEdit extends Component {
     // you can call this.props.changeBackground() from here
     return (
       <div className="settings_edit" >
-        Edit
+        <ChromePicker
+          color={theme.backgroundColor}
+          onChange={(c) => {
+            this.props.changeBackground(`rgba(${c.rgb.r},${c.rgb.g},${c.rgb.b},${c.rgb.a})`);
+          }}
+        />
       </div>
     );
   }
@@ -28,6 +32,7 @@ class SettingsEdit extends Component {
 
 SettingsEdit.propTypes = {
   theme: PropTypes.object.isRequired,
+  changeBackground: PropTypes.func.isRequired,
 };
 
 export default SettingsEdit;
