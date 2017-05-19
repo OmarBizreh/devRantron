@@ -5,11 +5,16 @@ import SettingsPreview from './settings_preview';
 
 const Settings = (props) => {
   const { theme, changeBackground } = props;
+  const previewTheme = theme;
   return (
-    <div className="settings_container" >
+    <div
+      className="settings_container"
+      style={{ background: previewTheme.backgroundColor }}
+    >
       <SettingsEdit
         theme={theme}
         changeBackground={changeBackground}
+        previewTheme={previewTheme}
       />
       <SettingsPreview theme={theme} />
     </div>
