@@ -2,6 +2,10 @@ import rantscript from '../consts/rantscript';
 import { USER, STATE } from '../consts/types';
 import showToast from './toast';
 
+/**
+ * Fetches a user. But does not store user's rants or comments as it is
+ * unnecessary to keep this huge amount of rants in state
+ */
 const fetchUser = () => (dispatch, getState) => {
   const { user } = getState().auth;
   dispatch({
@@ -21,14 +25,21 @@ const fetchUser = () => (dispatch, getState) => {
   rantscript
       .profile(userID)
       .then((res) => {
+        const profile = {
+          username: res.username,
+          score: res.score,
+          about: res.about,
+          location: res.location,
+          avatar: res.avatar,
+        };
         dispatch({
           type: USER.FETCH,
           state: STATE.SUCCESS,
-          profile: res,
+          profile,
         });
       })
       .catch(() => {
-        showToast(dispatch, 'User is not logged in');
+        dispatch(showToast('User is not logged in'));
         dispatch({
           type: USER.FETCH,
           state: STATE.FAILED,

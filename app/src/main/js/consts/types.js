@@ -3,20 +3,38 @@ export const AUTH = {
   NOLOGIN: 'AUTH_NOLOGIN',
   LOGOUT: 'AUTH_LOGOUT',
 };
+
 export const STATE = {
   INITIAL: 'STATE_INITIAL',
   SUCCESS: 'STATE_SUCCESS',
   FAILED: 'STATE_FAILED',
   LOADING: 'STATE_LOADING',
 };
+
 export const TOAST = {
   SHOW: 'TOAST_SHOW',
   HIDE: 'TOAST_HIDE',
 };
 
+export const MODAL = {
+  OPEN: 'MODAL_OPEN',
+  CLOSE: 'MODAL_CLOSE',
+};
+
 export const USER = {
   FETCH: 'USER_FETCH',
   REMOVE: 'USER_REMOVE',
+};
+
+export const COLUMNS = {
+  RESET: 'COLUMNS_RESET',
+  ADD: 'COLUMNS_ADD',
+  REMOVE: 'COLUMNS_REMOVE',
+};
+
+export const COLUMN = {
+  FETCH: 'COLUMN_FETCH',
+  RESET: 'COLUMN_RESET',
 };
 
 export const ITEM = {
@@ -33,6 +51,18 @@ export const ITEM = {
       VOTE: 'RANT_VOTE',
     },
   },
+  STORIES: {
+    NAME: 'STORIES',
+    ACTION: {
+      VOTE: 'RANT_VOTE',
+    },
+  },
+  COLLAB: {
+    NAME: 'COLLAB',
+    ACTION: {
+      VOTE: 'COLLAB_VOTE',
+    },
+  },
   COMMON: {
     ACTION: {
       CLOSE: 'ITEM_CLOSE',
@@ -45,6 +75,11 @@ export const SETTINGS = {
     CHANGE_BACKGROUND: 'THEME_CHANGE_BACK',
     CHANGE_COL_WIDTH: 'THEME_COL_WIDTH',
   },
+};
+
+export const FILTERS = {
+  SORT: 'SORT',
+  RANGE: 'RANGE',
 };
 
 export const FEED = {
@@ -94,8 +129,13 @@ export const FEED = {
       },
     },
   },
-  ACTION: {
-    FETCH: 'FEED_FETCH',
-    RESET: 'FEED_RESET',
+  COLLABS: {
+    NAME: 'COLLABS',
+    FILTERS: {
+      SORT: {
+        RECENT: 'recent',
+      },
+      PRIMARY: 'SORT',
+    },
   },
 };

@@ -7,9 +7,9 @@ import { openModal } from '../../actions/modal';
 
 const mapDispatchToProps = dispatch => ({
   fetch: (sort, range, id = 0, refresh = false) => {
-    dispatch(fetch(sort, FEED.STORIES.NAME, id, range, refresh));
+    dispatch(fetch(sort, FEED.COLLABS.NAME, id, range, refresh));
   },
-  vote: (voteState, id, type = ITEM.RANT.NAME) => {
+  vote: (voteState, id, type = ITEM.COLLAB.NAME) => {
     dispatch(vote(voteState, id, type));
   },
   open: (type, id) => {
@@ -20,8 +20,8 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   column: state.column,
   theme: state.settings.theme,
-  filters: FEED.STORIES.FILTERS,
-  itemType: ITEM.STORIES.NAME,
+  filters: FEED.COLLABS.FILTERS,
+  itemType: ITEM.COLLAB.NAME,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Column);

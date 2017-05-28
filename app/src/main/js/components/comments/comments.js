@@ -6,22 +6,22 @@ class Comments extends Component {
   constructor() {
     super();
     this.state = {
-      rant: null,
+      item: null,
     };
   }
-  componentWillMount() {
-  }
-  shouldComponentUpdate() {
-    const rantContainer = document.getElementsByClassName('rant_compact_column')[0];
-    setTimeout(() => {
-      rantContainer.scrollTop = rantContainer.scrollHeight;
-    }, 200);
+  shouldComponentUpdate(nextProps) {
+    if (this.props.comments.length === nextProps.comments.length) {
+      return false;
+    }
     return true;
   }
   render() {
     const { theme, vote, comments } = this.props;
     return (
       <div className="comments_container">
+        {
+          comments.length === 0 ? <h4>No comments</h4> : null
+        }
         {
           comments.map(comment => (
             <CommentCard
